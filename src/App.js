@@ -7,15 +7,7 @@ import { Routes, Route } from "react-router-dom"
 
 
 function App() {
-  const [favs, setFavs] = useState([{
-    name:"react"
-    },
-  {
-    name:"react-js"
-  },
-  {
-    name:"gg guys"
-  }])
+  const [favs, setFavs] = useState([])
 
   const handleSetFav = (pack)=>{ 
     var i;
@@ -28,7 +20,8 @@ function App() {
     setFavs([...favs,{
       name:`${pack}`
     }])
-    window.alert("Added to favorite")
+
+    // window.alert("Added to favorite")
   }
 
   const handleDelete = (key)=>{
