@@ -21,7 +21,7 @@ function App() {
       name:`${pack}`
     }])
 
-    // window.alert("Added to favorite")
+    window.alert("Added to favorite")
   }
 
   const handleDelete = (key)=>{
