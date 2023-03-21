@@ -6,7 +6,7 @@ const AddFavs = ({ favs, handleSetFav }) => {
   const [value, setValue] = useState("");
   const [pack, setPack] = useState("");
   const [isSearching, setIsSearching] = useState(false)
-  // useState 
+  // useState
   const getData = async (val) => {
     let toSearch = val.target.value;
     if (toSearch.length !== 0) {
@@ -54,14 +54,15 @@ const AddFavs = ({ favs, handleSetFav }) => {
           return (
             <>
               <p>
-                <input className="mx-1 p-5"
-                  type="radio"
-                  value={element.package.name}
-                  name="name"
-                  onClick={() => setPack(element.package.name)}
-                />
-                  {element.package.name}
-                
+                <label>
+                  <input className="mx-1 p-5"
+                    type="radio"
+                    value={element.package.name}
+                    name="name"
+                    onClick={() => setPack(element.package.name)}
+                  />
+                    {element.package.name}
+                </label>
               </p>
             </>
           );
