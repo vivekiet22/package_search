@@ -11,6 +11,15 @@ const HasFavs = ({favs,handleDelete}) => {
     setSelectedFavoriteName(favoriteName)
   }
 
+  const onCloseDialog = () => {
+    setSelectedFavoriteName('')
+  }
+
+  const deleteFavoriteName = (favoriteName) => {
+    handleDelete(favoriteName)
+    setSelectedFavoriteName('')
+  }
+
   const style1 = {border:"1px solid #D3D3D3"}
   return (
     <div className="container mx-auto " style={{maxWidth:"800px"}}>
@@ -37,8 +46,9 @@ const HasFavs = ({favs,handleDelete}) => {
 
                     <DeleteConfirm
                       value={favorite.name}
-                      handleDelete={() => handleDelete(selectedFavoriteName)}
-                      onClick={() => onOpenDialog(favorite.name)}
+                      handleDelete={() => deleteFavoriteName(selectedFavoriteName)}
+                      onOpenDialog={() => onOpenDialog(favorite.name)}
+                      onCloseDialog={onCloseDialog}
                     />
                   </td>
                 </tr>
