@@ -2,7 +2,7 @@ import './App.css';
 import AddFavs from './components/AddFavs';
 import HasFavs from './components/HasFavs';
 import NoFavs from './components/NoFavs';
-import { useState } from 'react';
+import {useEffect, useState} from 'react';
 import { Routes, Route } from "react-router-dom"
 
 
@@ -20,10 +20,20 @@ function App() {
     setFavs([...favs,{
       name:`${pack}`
     }])
-
     window.alert("Added to favorite")
   }
+  useEffect(() => {
+    if(favs.length){
+        localStorage.setItem('favs', JSON.stringify(favs));
+    }
+  }, [favs]);
 
+  useEffect(() => {
+    const localStorageFavs = JSON.parse(localStorage.getItem('favs'));
+    if (localStorageFavs) {
+        setFavs(localStorageFavs);
+    }
+  }, []);
   const handleDelete = (key)=>{
       console.log("delete  in process")
       console.log(key)
