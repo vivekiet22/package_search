@@ -15,7 +15,7 @@ const DeleteConfirm = ({handleDelete,onOpenDialog,onCloseDialog}) => {
         Are you sure you want to delete?
       </div>
       <div className="modal-footer">
-        <button type="button" className="btn btn-secondary" data-dismiss="modal" nClick={onCloseDialog}>Cancel</button>
+        <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={onCloseDialog}>Cancel</button>
         <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={handleDelete}>Yes</button>
       </div>
     </div>
