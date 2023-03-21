@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 
-const DeleteConfirm = ({value,handleDelete}) => {
+const DeleteConfirm = ({value,handleDelete,onClick}) => {
 
   const del= (e)=>{
-    
+
     // console.log(value)
     handleDelete(value)
   }
@@ -12,13 +12,13 @@ const DeleteConfirm = ({value,handleDelete}) => {
 
   return (
     <div>
-<i class='btn fa fa-trash' style={{color:'#555553' ,outline:"none"}} data-toggle="modal" data-target="#exampleModalCenter"></i>
+<i class='btn fa fa-trash' style={{color:'#555553' ,outline:"none"}} data-toggle="modal" data-target="#exampleModalCenter" onClick={onClick}></i>
 
 
 <div className="modal fade" id="exampleModalCenter" tabIndex="-1" role="dialog" data-backdrop="false" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div className="modal-dialog modal-dialog-centered" role="document">
     <div className="modal-content">
-     
+
       <div className="modal-body">
         Are you sure you want to delete?
       </div>
@@ -29,7 +29,7 @@ const DeleteConfirm = ({value,handleDelete}) => {
     </div>
   </div>
 </div>
-      
+
     </div>
   )
 }
