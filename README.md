@@ -30,8 +30,7 @@ Click the demo link or clone/download the repository on your local machine.
 
 - React js
 - React Hooks
-- React Bootstrap
-- React Icons
+
 #### API used
 `https://api.npms.io/v2/search?q=reactjs`
 
