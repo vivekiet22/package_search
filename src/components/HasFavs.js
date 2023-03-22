@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import DeleteConfirm from "./DeleteConfirm";
+import EditConfirm from "./EditConfirm";
+import ViewConfirm from "./ViewConfirm";
 
 import { Link } from "react-router-dom";
 
@@ -43,7 +45,9 @@ const HasFavs = ({ favs, handleDelete }) => {
                 <td className="p-2" style={{ border: "1px solid #D3D3D3" }}>
                   {favorite.name}
                 </td>
-                <td className="p-2">
+                <td className="p-2" style={{ display: "flex" }}>
+                  <ViewConfirm/>
+                  <EditConfirm/>
                   <DeleteConfirm
                     value={favorite.name}
                     handleDelete={() =>
@@ -51,7 +55,7 @@ const HasFavs = ({ favs, handleDelete }) => {
                     }
                     onOpenDialog={() => onOpenDialog(favorite.name)}
                     onCloseDialog={onCloseDialog}
-                  />
+                    />
                 </td>
               </tr>
             );
