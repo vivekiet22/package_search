@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import showNotification from "./showNotification";
 
 const AddFavs = ({ favs, handleSetFav }) => {
   const [data, setData] = useState([]);
   const [value, setValue] = useState("");
   const [pack, setPack] = useState("");
-  const [isSearching, setIsSearching] = useState(false)
+  const [isSearching, setIsSearching] = useState(false);
   // useState
   const getData = async (val) => {
     let toSearch = val.target.value;
@@ -15,17 +16,16 @@ const AddFavs = ({ favs, handleSetFav }) => {
       // console.log(parsedRes.results);
       setData(parsedRes.results);
     }
-    setIsSearching(toSearch.length!=0)
+    setIsSearching(toSearch.length !== 0);
   };
 
   const handleSubmit = () => {
     if (pack.length === 0) {
-      window.alert("Select a package");
+      showNotification("Error", "Select a Package", "Danger");
     } else if (value.length === 0) {
-      window.alert("Please fill the reason");
+      showNotification("Error", "Please Fill the Reason", "Info");
     } else {
       handleSetFav(pack);
-
     }
   };
   const style = {
@@ -38,7 +38,7 @@ const AddFavs = ({ favs, handleSetFav }) => {
       <label className="float-left">
         <b>Search for NPM Packages</b>
       </label>
-      <Link  className="btn btn-primary my-2 float-right" to="/">
+      <Link className="btn btn-primary my-2 float-right" to="/">
         Your Fav
       </Link>
       <input
@@ -46,44 +46,54 @@ const AddFavs = ({ favs, handleSetFav }) => {
         type="text"
         onChange={getData}
       />
-    {data.length!==0 && isSearching?
-      <>
-      <b>Results</b>
-      <div style={style}>
-        {data.map((element) => {
-          return (
-            <>
-              <p>
-                <label>
-                  <input className="mx-1 p-5"
-                    type="radio"
-                    value={element.package.name}
-                    name="name"
-                    onClick={() => setPack(element.package.name)}
-                  />
+      {data.length !== 0 && isSearching ? (
+        <>
+          <b>Results</b>
+          <div style={style}>
+            {data.map((element) => {
+              return (
+                <p key={element.package.name}>
+                  <label>
+                    <input
+                      className="mx-1 p-5"
+                      type="radio"
+                      value={element.package.name}
+                      name="name"
+                      onClick={() => setPack(element.package.name)}
+                    />
                     {element.package.name}
-                </label>
-              </p>
-            </>
-          );
-        })}
-      </div>
-      <div>
-        <p className="mt-2">
-          <b>Why is this your fav?</b>
-        </p>
+                  </label>
+                </p>
+              );
+            })}
+          </div>
+          <div>
+            <p className="mt-2">
+              <b>Why is this your fav?</b>
+            </p>
 
-        <textarea
-          style={{ border: "1px solid #D3D3D3", width: "100%", height: "100px" }}
-          onChange={(v) => setValue(v.target.value)}
-        />
-        <br />
-        <button class="btn btn-primary float-right" onClick={handleSubmit}>
-          Submit
-        </button>
-      </div>
-      </>
-      :isSearching?<p>No Results Found</p>:""}
+            <textarea
+              style={{
+                border: "1px solid #D3D3D3",
+                width: "100%",
+                height: "100px",
+              }}
+              onChange={(v) => setValue(v.target.value)}
+            />
+            <br />
+            <button
+              className="btn btn-primary float-right"
+              onClick={handleSubmit}
+            >
+              Submit
+            </button>
+          </div>
+        </>
+      ) : isSearching ? (
+        <p>No Results Found</p>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

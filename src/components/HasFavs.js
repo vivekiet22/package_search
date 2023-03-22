@@ -3,62 +3,61 @@ import DeleteConfirm from "./DeleteConfirm";
 
 import { Link } from "react-router-dom";
 
-const HasFavs = ({favs,handleDelete}) => {
-
-  const [selectedFavoriteName, setSelectedFavoriteName] = useState('')
+const HasFavs = ({ favs, handleDelete }) => {
+  const [selectedFavoriteName, setSelectedFavoriteName] = useState("");
 
   const onOpenDialog = (favoriteName) => {
-    setSelectedFavoriteName(favoriteName)
-  }
+    setSelectedFavoriteName(favoriteName);
+  };
 
   const onCloseDialog = () => {
-    setSelectedFavoriteName('')
-  }
+    setSelectedFavoriteName("");
+  };
 
   const deleteFavoriteName = (favoriteName) => {
-    handleDelete(favoriteName)
-    setSelectedFavoriteName('')
-  }
+    handleDelete(favoriteName);
+    setSelectedFavoriteName("");
+  };
 
-  const style1 = {border:"1px solid #D3D3D3"}
+  const style1 = { border: "1px solid #D3D3D3" };
   return (
-    <div className="container mx-auto " style={{maxWidth:"800px"}}>
+    <div className="container mx-auto " style={{ maxWidth: "800px" }}>
       <h3 className="float-left my-5">Welcome to Favorite NPM Packages</h3>
 
-      <Link className="btn btn-primary float-right my-5" to="/add">Add Fav </Link>
+      <Link className="btn btn-primary float-right my-5" to="/add">
+        Add Fav{" "}
+      </Link>
 
-        <table className="container my-5" style={{border:"1px solid #D3D3D3"}}>
-          <tbody>
+      <table className="container my-5" style={{ border: "1px solid #D3D3D3" }}>
+        <tbody>
           <tr style={style1}>
-            <th  className="p-2" style={{border:"1px solid #D3D3D3"}}>Package Name</th>
+            <th className="p-2" style={{ border: "1px solid #D3D3D3" }}>
+              Package Name
+            </th>
             <th className="p-2">Actions</th>
           </tr>
 
-          {
-            favs.map((favorite)=>{
-
-              return (
-                <tr style={style1} class key={favorite.name}>
-                  <td className="p-2" style={{border:"1px solid #D3D3D3"}}>
-                    {favorite.name}
-                  </td>
-                  <td className="p-2">
-
-                    <DeleteConfirm
-                      value={favorite.name}
-                      handleDelete={() => deleteFavoriteName(selectedFavoriteName)}
-                      onOpenDialog={() => onOpenDialog(favorite.name)}
-                      onCloseDialog={onCloseDialog}
-                    />
-                  </td>
-                </tr>
-              )
-            })
-          }
-
-
-</tbody>
-        </table>
+          {favs.map((favorite) => {
+            return (
+              <tr style={style1}  key={favorite.name}>
+                <td className="p-2" style={{ border: "1px solid #D3D3D3" }}>
+                  {favorite.name}
+                </td>
+                <td className="p-2">
+                  <DeleteConfirm
+                    value={favorite.name}
+                    handleDelete={() =>
+                      deleteFavoriteName(selectedFavoriteName)
+                    }
+                    onOpenDialog={() => onOpenDialog(favorite.name)}
+                    onCloseDialog={onCloseDialog}
+                  />
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     </div>
   );
 };
