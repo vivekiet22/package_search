@@ -3,13 +3,20 @@ import React from "react";
 const DeleteConfirm = ({ handleDelete, onOpenDialog, onCloseDialog }) => {
   return (
     <div>
-      <i
-        className="btn fa fa-trash"
-        style={{ color: "#555553", outline: "none" }}
-        data-toggle="modal"
-        data-target="#exampleModalCenter"
-        onClick={onOpenDialog}
-      ></i>
+      <span
+        class="d-inline-block"
+        tabindex="0"
+        data-toggle="tooltip"
+        title="Delete"
+      >
+        <i
+          className="btn fa fa-trash"
+          style={{ color: "#555553", outline: "none" }}
+          data-toggle="modal"
+          data-target="#exampleModalCenter"
+          onClick={onOpenDialog}
+        ></i>
+      </span>
 
       <div
         className="modal fade"
