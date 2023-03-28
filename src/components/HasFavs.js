@@ -5,7 +5,7 @@ import ViewConfirm from "./ViewConfirm";
 
 import { Link } from "react-router-dom";
 
-const HasFavs = ({ favs, handleDelete }) => {
+const HasFavs = ({ favs, handleDelete, handleEdit }) => {
 
   const deleteFavorite = (favorite) => {
     handleDelete(favorite.name);
@@ -39,7 +39,12 @@ const HasFavs = ({ favs, handleDelete }) => {
                   <ViewConfirm
                     value={favorite}
                   />
-                  <EditConfirm/>
+                  <EditConfirm
+                    value={favorite}
+                    handleEdit={
+                      handleEdit
+                    }
+                  />
                   <DeleteConfirm
                     value={favorite}
                     handleDelete={() =>
