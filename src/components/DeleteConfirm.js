@@ -1,11 +1,11 @@
 import React from "react";
 
-const DeleteConfirm = ({ handleDelete, onOpenDialog, onCloseDialog }) => {
+const DeleteConfirm = ({ value, handleDelete }) => {
   return (
     <div>
       <span
-        class="d-inline-block"
-        tabindex="0"
+        className="d-inline-block"
+        tabIndex="0"
         data-toggle="tooltip"
         title="Delete"
       >
@@ -13,14 +13,13 @@ const DeleteConfirm = ({ handleDelete, onOpenDialog, onCloseDialog }) => {
           className="btn fa fa-trash"
           style={{ color: "#555553", outline: "none" }}
           data-toggle="modal"
-          data-target="#exampleModalCenter"
-          onClick={onOpenDialog}
+          data-target={`#deleteModalCenter${value.name}`}
         ></i>
       </span>
 
       <div
         className="modal fade"
-        id="exampleModalCenter"
+        id={`deleteModalCenter${value.name}`}
         tabIndex="-1"
         role="dialog"
         data-backdrop="false"
@@ -35,7 +34,6 @@ const DeleteConfirm = ({ handleDelete, onOpenDialog, onCloseDialog }) => {
                 type="button"
                 className="btn btn-secondary"
                 data-dismiss="modal"
-                onClick={onCloseDialog}
               >
                 Cancel
               </button>

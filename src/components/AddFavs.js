@@ -25,7 +25,7 @@ const AddFavs = ({ favs, handleSetFav }) => {
     } else if (value.length === 0) {
       showNotification("Error", "Please Fill the Reason", "Info");
     } else {
-      handleSetFav(pack);
+      handleSetFav(pack, value);
     }
   };
   const style = {

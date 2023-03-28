@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import DeleteConfirm from "./DeleteConfirm";
 import EditConfirm from "./EditConfirm";
 import ViewConfirm from "./ViewConfirm";
@@ -6,19 +6,9 @@ import ViewConfirm from "./ViewConfirm";
 import { Link } from "react-router-dom";
 
 const HasFavs = ({ favs, handleDelete }) => {
-  const [selectedFavoriteName, setSelectedFavoriteName] = useState("");
 
-  const onOpenDialog = (favoriteName) => {
-    setSelectedFavoriteName(favoriteName);
-  };
-
-  const onCloseDialog = () => {
-    setSelectedFavoriteName("");
-  };
-
-  const deleteFavoriteName = (favoriteName) => {
-    handleDelete(favoriteName);
-    setSelectedFavoriteName("");
+  const deleteFavorite = (favorite) => {
+    handleDelete(favorite.name);
   };
 
   const style1 = { border: "1px solid #D3D3D3" };
@@ -46,15 +36,15 @@ const HasFavs = ({ favs, handleDelete }) => {
                   {favorite.name}
                 </td>
                 <td className="p-2" style={{ display: "flex" }}>
-                  <ViewConfirm/>
+                  <ViewConfirm
+                    value={favorite}
+                  />
                   <EditConfirm/>
                   <DeleteConfirm
-                    value={favorite.name}
+                    value={favorite}
                     handleDelete={() =>
-                      deleteFavoriteName(selectedFavoriteName)
+                      deleteFavorite(favorite)
                     }
-                    onOpenDialog={() => onOpenDialog(favorite.name)}
-                    onCloseDialog={onCloseDialog}
                     />
                 </td>
               </tr>

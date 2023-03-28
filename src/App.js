@@ -12,7 +12,7 @@ import showNotification from "./components/showNotification";
 function App() {
   const [favs, setFavs] = useState([]);
 
-  const handleSetFav = (pack) => {
+  const handleSetFav = (pack, value) => {
     var i;
     for (i = 0; i < favs.length; i++) {
       if (favs[i].name === pack) {
@@ -24,6 +24,7 @@ function App() {
       ...favs,
       {
         name: `${pack}`,
+        reasob: `${value}`,
       },
     ]);
     showNotification("Congrats", "Added to Favorite", "Success");
