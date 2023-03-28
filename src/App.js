@@ -24,7 +24,7 @@ function App() {
       ...favs,
       {
         name: `${pack}`,
-        reasob: `${value}`,
+        reason: `${value}`,
       },
     ]);
     showNotification("Congrats", "Added to Favorite", "Success");
