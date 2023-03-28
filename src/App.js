@@ -41,6 +41,7 @@ function App() {
       setFavs(localStorageFavs);
     }
   }, []);
+
   const handleDelete = (key) => {
     console.log("delete  in process");
     console.log(key);
@@ -49,6 +50,23 @@ function App() {
 
     showNotification("Success", "Package Deleted From Fav", "success");
   };
+
+  const handleEdit = (key, editFav) => {
+    console.log("edit  in process");
+    console.log(key);
+    const newFavs = favs.map((fav) => {
+      if(fav.name === key) {
+        fav.name = editFav.name;
+        fav.reason = editFav.reason;
+        return fav;
+      }
+      return fav;
+    });
+    setFavs(newFavs);
+
+    showNotification("Success", "Package editted From Fav", "success");
+  };
+
   return (
     <>
       <ReactNotifications />
@@ -62,7 +80,7 @@ function App() {
           path="/"
           element={
             favs.length !== 0 ? (
-              <HasFavs favs={favs} handleDelete={handleDelete} />
+              <HasFavs favs={favs} handleDelete={handleDelete} handleEdit={handleEdit} />
             ) : (
               <NoFavs />
             )
